@@ -6,8 +6,12 @@ import os
 import shutil
 import zipfile
 import glob  # Added for more efficient file matching
+import warnings
 
 from src.static.constants import path_to_network
+
+# Suppress RuntimeWarning for DateTime to Date conversion in shapefiles
+warnings.filterwarnings('ignore', message='.*date field, though DateTime requested.*', category=RuntimeWarning)
 
 
 def backup_data(geopackage, layer_name, export_path):
